@@ -23,12 +23,12 @@ public class SoftwareCompanyEndpoint {
         this.softwareCompanyService = softwareCompanyService;
     }
 
-    @GetMapping(path = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/softwareCompany/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public SoftwareCompany getSoftwareCompany(@PathVariable String name) {
         return softwareCompanyService.getSoftwareCompanyByName(name);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/softwareCompany", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createSoftwareCompany(@RequestBody WebSoftwareCompany webSoftwareCompany) {
         softwareCompanyService.createSoftwareCompany(
                 webSoftwareCompany.getName(),

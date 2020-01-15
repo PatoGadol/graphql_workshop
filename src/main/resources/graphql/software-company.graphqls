@@ -1,17 +1,34 @@
 type SoftwareCompany {
-	id: ID!,
-	name: String,
-	companyWorth: Float,
-	numberOfEmployees: Int,
-	dateFounded: String,
-	companyHistory: String
+    id: ID!,
+    name: String,
+    companyWorth: Float,
+    numberOfEmployees: Int,
+    dateFounded: String,
+    companyHistory: String
+}
+
+type Employee {
+    id: ID!,
+    firstName: String,
+    lastName: String,
+    function: String,
+    annualSalary: Float,
+    seniority: String
 }
 
 type Query {
-	softwareCompanies(count: Int):[SoftwareCompany]
-	softwareCompany(name: String):SoftwareCompany
+    softwareCompanies(count: Int):[SoftwareCompany]
+    softwareCompany(name: String):SoftwareCompany
+    employee(firstName: String):[Employee]
 }
 
 type Mutation {
-	createSoftwareCompany(name: String!, companyWorth: Float!, numberOfEmployees: Int!, dateFounded: String!, companyHistory: String):SoftwareCompany
+    createSoftwareCompany(name: String!, companyWorth: Float!, numberOfEmployees: Int!, dateFounded: String!, companyHistory: String):SoftwareCompany
+    createEmployee(
+        firstName: String,
+        lastName: String,
+        function: String,
+        annualSalary: Float,
+        seniority: Int):Employee
 }
+

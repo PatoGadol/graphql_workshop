@@ -1,19 +1,24 @@
 package nl.cinqict.workshop.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import nl.cinqict.workshop.entities.Employee;
 import nl.cinqict.workshop.entities.SoftwareCompany;
+import nl.cinqict.workshop.services.EmployeeService;
 import nl.cinqict.workshop.services.SoftwareCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SoftwareCompanyMutation implements GraphQLMutationResolver {
+public class GraphQLMutation implements GraphQLMutationResolver {
 
     private final SoftwareCompanyService softwareCompanyService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public SoftwareCompanyMutation(SoftwareCompanyService softwareCompanyService) {
+    public GraphQLMutation(SoftwareCompanyService softwareCompanyService,
+                           EmployeeService employeeService) {
         this.softwareCompanyService = softwareCompanyService;
+        this.employeeService = employeeService;
     }
 
     public SoftwareCompany createSoftwareCompany(String name,
@@ -28,5 +33,19 @@ public class SoftwareCompanyMutation implements GraphQLMutationResolver {
                 numberOfEmployees,
                 dateFounded,
                 companyHistory);
+    }
+
+    public Employee createEmployee(String firstName,
+                                          String lastName,
+                                          String function,
+                                          Float annualSalary,
+                                          Integer seniority) {
+
+        return this.employeeService.createEmployee(
+                firstName,
+                lastName,
+                function,
+                annualSalary,
+                seniority);
     }
 }
