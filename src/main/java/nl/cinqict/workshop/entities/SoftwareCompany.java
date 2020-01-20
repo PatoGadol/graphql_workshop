@@ -2,13 +2,10 @@ package nl.cinqict.workshop.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,6 +32,10 @@ public class SoftwareCompany implements Serializable {
 
     @Column(name = "company_history")
     private String companyHistory;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OrderBy("name ASC")
+    private List<Product> products;
 
     private transient  String formattedDate;
 

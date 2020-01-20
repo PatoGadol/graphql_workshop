@@ -25,12 +25,6 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(String firstName, String lastName, String function, Float annualSalary, Integer seniority) {
-        /*Employee employee = new Employee();
-        employee.setFirstName(firstName);
-        employee.setLastName(lastName);
-        employee.setFunction(function);
-        employee.setAnnualSalary(annualSalary);
-        employee.setSeniority(seniority);*/
         Employee employee = Employee.builder()
                 .firstName(firstName)
                 .lastName(lastName)

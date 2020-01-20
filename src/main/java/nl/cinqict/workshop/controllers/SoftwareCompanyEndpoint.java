@@ -35,7 +35,8 @@ public class SoftwareCompanyEndpoint {
                 webSoftwareCompany.getCompanyWorth(),
                 webSoftwareCompany.getNumberOfEmployees(),
                 webSoftwareCompany.getDateFounded(),
-                webSoftwareCompany.getCompanyHistory());
+                webSoftwareCompany.getCompanyHistory(),
+                webSoftwareCompany.getProducts());
 
         return new ResponseEntity(HttpStatus.OK);
     }

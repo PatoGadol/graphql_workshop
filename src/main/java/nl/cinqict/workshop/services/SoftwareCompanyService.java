@@ -1,5 +1,6 @@
 package nl.cinqict.workshop.services;
 
+import nl.cinqict.workshop.entities.Product;
 import nl.cinqict.workshop.entities.SoftwareCompany;
 import nl.cinqict.workshop.repositories.SoftwareCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,14 @@ public class SoftwareCompanyService {
                                                  final Float companyWorth,
                                                  final Integer numberOfEmployees,
                                                  final String dateFounded,
-                                                 final String companyHistory) {
-        return createSoftwareCompany(name, companyWorth, numberOfEmployees, LocalDate.parse(dateFounded), companyHistory);
+                                                 final String companyHistory,
+                                                 final List<Product> products) {
+        return createSoftwareCompany(name,
+                companyWorth,
+                numberOfEmployees,
+                LocalDate.parse(dateFounded),
+                companyHistory,
+                products);
     }
 
     @Transactional
@@ -38,7 +45,8 @@ public class SoftwareCompanyService {
                                                  final Float companyWorth,
                                                  final Integer numberOfEmployees,
                                                  final LocalDate dateFounded,
-                                                 final String companyHistory) {
+                                                 final String companyHistory,
+                                                 final List<Product> products) {
 
         SoftwareCompany softwareCompany = new SoftwareCompany();
         softwareCompany.setName(name);
@@ -46,6 +54,7 @@ public class SoftwareCompanyService {
         softwareCompany.setNumberOfEmployees(numberOfEmployees);
         softwareCompany.setDateFounded(dateFounded);
         softwareCompany.setCompanyHistory(companyHistory);
+        softwareCompany.setProducts(products);
         return this.softwareCompanyRepository.save(softwareCompany);
     }
 

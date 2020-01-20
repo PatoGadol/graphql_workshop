@@ -2,8 +2,10 @@ package nl.cinqict.workshop.webentitites;
 
 
 import lombok.Value;
+import nl.cinqict.workshop.entities.Product;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Value
 public class WebSoftwareCompany {
@@ -13,4 +15,5 @@ public class WebSoftwareCompany {
     private Integer numberOfEmployees;
     private LocalDate dateFounded;
     private String companyHistory;
+    private List<Product> products;
 }

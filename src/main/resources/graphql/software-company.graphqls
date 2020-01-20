@@ -1,3 +1,13 @@
+input SoftwareCompanyInput {
+    id: ID!,
+    name: String,
+    companyWorth: Float,
+    numberOfEmployees: Int,
+    dateFounded: String,
+    companyHistory: String
+    products: [ProductInput]
+}
+
 type SoftwareCompany {
     id: ID!,
     name: String,
@@ -5,6 +15,7 @@ type SoftwareCompany {
     numberOfEmployees: Int,
     dateFounded: String,
     companyHistory: String
+    products: [Product!]!
 }
 
 type Employee {
@@ -16,6 +27,24 @@ type Employee {
     seniority: String
 }
 
+input ProductInput {
+    type: ProductType,
+    name: String,
+    specs: String
+}
+
+type Product {
+    id: ID!,
+    type: ProductType,
+    name: String,
+    specs: String
+}
+
+enum ProductType {
+    Software,
+    Hardware
+}
+
 type Query {
     softwareCompanies(count: Int):[SoftwareCompany]
     softwareCompany(name: String):SoftwareCompany
@@ -23,7 +52,13 @@ type Query {
 }
 
 type Mutation {
-    createSoftwareCompany(name: String!, companyWorth: Float!, numberOfEmployees: Int!, dateFounded: String!, companyHistory: String):SoftwareCompany
+    createSoftwareCompany(
+        name: String!,
+        companyWorth: Float!,
+        numberOfEmployees: Int!,
+        dateFounded: String!,
+        companyHistory: String
+        products: [ProductInput]):SoftwareCompany
     createEmployee(
         firstName: String,
         lastName: String,
