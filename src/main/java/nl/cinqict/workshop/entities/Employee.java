@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Builder
 @NoArgsConstructor
@@ -36,4 +37,8 @@ public class Employee implements Serializable {
 
     @Column
     private Integer seniority;
+
+    @Column
+    private LocalDate dateOfBirth;
+
 }

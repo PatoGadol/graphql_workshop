@@ -17,15 +17,18 @@ type SoftwareCompany {
     companyHistory: String
     products: [Product!]!
 }
+scalar Date
 
 type Employee {
     id: ID!,
     firstName: String,
     lastName: String,
     function: String,
+    dateOfBirth: Date,
     annualSalary: Float,
     seniority: String
 }
+
 
 input ProductInput {
     type: ProductType,
@@ -64,6 +67,7 @@ type Mutation {
         lastName: String,
         function: String,
         annualSalary: Float,
-        seniority: Int):Employee
+        seniority: Int
+        dateOfBirth:Date):Employee
 }
 
