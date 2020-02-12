@@ -48,6 +48,21 @@ enum ProductType {
     Hardware
 }
 
+interface Department {
+    id: ID!
+    name: String!
+}
+
+type CarDepartment implements Department {
+    id: ID!
+    name: String!
+}
+
+type BusDepartment implements Department {
+    id: ID!
+    name: String!
+}
+
 type Query {
     softwareCompanies(count: Int):[SoftwareCompany]
     softwareCompany(name: String):SoftwareCompany
