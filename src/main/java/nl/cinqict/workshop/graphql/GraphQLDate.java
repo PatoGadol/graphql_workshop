@@ -19,7 +19,7 @@ import java.util.List;
 public class GraphQLDate extends GraphQLScalarType implements Serializable {
 
     private static final String DEFAULT_NAME = "Date";
-    public static final String DD_MM_YYYY = "dd/MM/yyyy";
+    private static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     public GraphQLDate() {
         super(DEFAULT_NAME, DEFAULT_NAME, new Coercing() {
